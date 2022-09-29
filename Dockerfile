@@ -38,6 +38,7 @@ RUN if [ "$xdebug" -eq 1 ]; then pecl install xdebug && docker-php-ext-enable xd
 
 COPY        ./docker/php/conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 COPY        ./docker/php/conf.d/error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
+COPY        ./docker/php/conf.d/php.ini /usr/local/etc/php/conf.d/custom.ini
 RUN if [ "$xdebug" -eq 1 ]; then echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; fi
 
 ENV         COMPOSER_HOME=/var/composer
